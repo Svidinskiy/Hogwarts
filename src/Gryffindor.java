@@ -13,8 +13,6 @@ public class Gryffindor extends Hogwarts {
         this.bravery = bravery;
     }
 
-
-
     public int getNobility() {
         return nobility;
     }
@@ -53,7 +51,7 @@ public class Gryffindor extends Hogwarts {
                 ", расстояние трансгрессии-" + getTransgressionDistance();
     }
 
-    public static void compareGryffindor(Gryffindor[] students) {
+    public void studentsChoiceGryffindor(Gryffindor[] students) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Выберите двух учеников для сравнения:");
 
@@ -66,6 +64,10 @@ public class Gryffindor extends Hogwarts {
         System.out.print("Введите номер второго ученика: ");
         int secondIndex = scanner.nextInt() - 1;
 
+        compareGriffindor(students, firstIndex, secondIndex);
+    }
+
+    public void compareGriffindor(Gryffindor[] students, int firstIndex, int secondIndex){
         int firstTotal = students[firstIndex].getNobility() + students[firstIndex].getBravery() + students[firstIndex].getHonor();
         int secondTotal = students[secondIndex].getNobility() + students[secondIndex].getBravery() + students[secondIndex].getHonor();
 
@@ -77,4 +79,5 @@ public class Gryffindor extends Hogwarts {
             System.out.println(students[firstIndex].getName() + " и " + students[secondIndex].getName() + " равны по качествам.");
         }
     }
+
 }

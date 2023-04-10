@@ -57,7 +57,7 @@ public class Ravenclaw extends Hogwarts {
                 ", сила магии-" + getMagicPower() +
                 ", расстояние трансгрессии-" + getTransgressionDistance();
     }
-    public static void compareRavenclaw(Ravenclaw[] students) {
+    public void studentsChoiceRavenclaw(Ravenclaw[] students) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Выберите двух учеников для сравнения:");
 
@@ -70,6 +70,10 @@ public class Ravenclaw extends Hogwarts {
         System.out.print("Введите номер второго ученика: ");
         int secondIndex = scanner.nextInt() - 1;
 
+        compareRavenclaw(students, firstIndex, secondIndex);
+    }
+
+    public void compareRavenclaw(Ravenclaw[] students, int firstIndex, int secondIndex){
         int firstTotal = students[firstIndex].getIntelligence() + students[firstIndex].getWisdom() + students[firstIndex].getCreativity() + students[firstIndex].getWit();
         int secondTotal = students[secondIndex].getIntelligence() + students[secondIndex].getWisdom() + students[secondIndex].getCreativity() + students[secondIndex].getWit();
 
