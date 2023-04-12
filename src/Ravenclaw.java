@@ -57,32 +57,18 @@ public class Ravenclaw extends Hogwarts {
                 ", сила магии-" + getMagicPower() +
                 ", расстояние трансгрессии-" + getTransgressionDistance();
     }
-    public void studentsChoiceRavenclaw(Ravenclaw[] students) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Выберите двух учеников для сравнения:");
 
-        for (int i = 0; i < students.length; i++) {
-            System.out.println((i + 1) + ". " + students[i].getName());
-        }
 
-        System.out.print("Введите номер первого ученика: ");
-        int firstIndex = scanner.nextInt() - 1;
-        System.out.print("Введите номер второго ученика: ");
-        int secondIndex = scanner.nextInt() - 1;
-
-        compareRavenclaw(students, firstIndex, secondIndex);
-    }
-
-    public void compareRavenclaw(Ravenclaw[] students, int firstIndex, int secondIndex){
-        int firstTotal = students[firstIndex].getIntelligence() + students[firstIndex].getWisdom() + students[firstIndex].getCreativity() + students[firstIndex].getWit();
-        int secondTotal = students[secondIndex].getIntelligence() + students[secondIndex].getWisdom() + students[secondIndex].getCreativity() + students[secondIndex].getWit();
+    public void compareRavenclaw(Ravenclaw student){
+        int firstTotal = this.getIntelligence() + this.getWisdom() + this.getCreativity() + this.getWit();
+        int secondTotal = student.getIntelligence() + student.getWisdom() + student.getCreativity() + student.getWit();
 
         if (firstTotal > secondTotal) {
-            System.out.println(students[firstIndex].getName() + " лучший ученик, чем " + students[secondIndex].getName());
+            System.out.println(this.getName() + " лучший ученик, чем " + student.getName());
         } else if (firstTotal < secondTotal) {
-            System.out.println(students[secondIndex].getName() + " лучший ученик, чем " + students[firstIndex].getName());
+            System.out.println(student.getName() + " лучший ученик, чем " + this.getName());
         } else {
-            System.out.println(students[firstIndex].getName() + " и " + students[secondIndex].getName() + " равны по качествам.");
+            System.out.println(this.getName() + " и " + student.getName() + " равны по качествам.");
         }
     }
 }
