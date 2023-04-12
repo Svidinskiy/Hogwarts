@@ -50,7 +50,7 @@ public class Hufflepuff extends Hogwarts {
                 ", сила магии-" + getMagicPower() +
                 ", расстояние трансгрессии-" + getTransgressionDistance();
     }
-    public static void compareHufflepuff(Hufflepuff[] students) {
+    public void studentsChoiceHufflepuff(Hufflepuff[] students) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Выберите двух учеников для сравнения:");
 
@@ -63,6 +63,10 @@ public class Hufflepuff extends Hogwarts {
         System.out.print("Введите номер второго ученика: ");
         int secondIndex = scanner.nextInt() - 1;
 
+        compareHufflepuff(students, firstIndex, secondIndex);
+    }
+
+    public void compareHufflepuff(Hufflepuff[] students, int firstIndex, int secondIndex){
         int firstTotal = students[firstIndex].getHardworking() + students[firstIndex].getLoyal() + students[firstIndex].getHonest();
         int secondTotal = students[secondIndex].getHardworking() + students[secondIndex].getLoyal() + students[secondIndex].getHonest();
 

@@ -73,7 +73,8 @@ public class Slytherin extends Hogwarts {
                 ", сила магии-" + getMagicPower() +
                 ", расстояние трансгрессии-" + getTransgressionDistance();
     }
-    public static void compareSlytherin(Slytherin[] students) {
+
+    public void studentsChoiceSlytherin(Slytherin[] students) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Выберите двух учеников для сравнения:");
 
@@ -86,6 +87,10 @@ public class Slytherin extends Hogwarts {
         System.out.print("Введите номер второго ученика: ");
         int secondIndex = scanner.nextInt() - 1;
 
+        compareSlytherin(students, firstIndex, secondIndex);
+    }
+
+    public void compareSlytherin(Slytherin[] students, int firstIndex, int secondIndex){
         int firstTotal = students[firstIndex].getCunning() + students[firstIndex].getDetermination() + students[firstIndex].getAmbition() +
                 students[firstIndex].getResourcefulness() + students[firstIndex].getDesireForPower();
         int secondTotal = students[secondIndex].getCunning() + students[secondIndex].getDetermination() + students[secondIndex].getAmbition() +
@@ -99,4 +104,5 @@ public class Slytherin extends Hogwarts {
             System.out.println(students[firstIndex].getName() + " и " + students[secondIndex].getName() + " равны по качествам.");
         }
     }
+
 }
