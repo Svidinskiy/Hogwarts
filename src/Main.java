@@ -24,7 +24,7 @@ public class Main {
 
         printAllStudents();
         compareStudents();
-        Hogwarts.studentsChoiceMagicAndTransgressionDistance(gryffindors, slytherins, hufflepuffs, ravenclaws);
+        studentsChoiceMagicAndTransgressionDistance(gryffindors, slytherins, hufflepuffs, ravenclaws);
 
     }
 
@@ -64,21 +64,126 @@ public class Main {
             System.out.println("\n");
             switch (flag) {
                 case 1:
-                    gryffindors[0].studentsChoiceGryffindor(gryffindors);
+                    studentsChoiceGryffindor(gryffindors);
                     break;
                 case 2:
-                    slytherins[0].studentsChoiceSlytherin(slytherins);
+                    studentsChoiceSlytherin(slytherins);
                     break;
                 case 3:
-                    hufflepuffs[0].studentsChoiceHufflepuff(hufflepuffs);
+                    studentsChoiceHufflepuff(hufflepuffs);
                     break;
                 case 4:
-                    ravenclaws[0].studentsChoiceRavenclaw(ravenclaws);
+                    studentsChoiceRavenclaw(ravenclaws);
                     break;
                 default:
                     System.out.println("Некорректный выбор");
             }
         }
+    }
+
+    public static void studentsChoiceGryffindor(Gryffindor[] students) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Выберите двух учеников для сравнения:");
+
+        for (int i = 0; i < students.length; i++) {
+            System.out.println((i + 1) + ". " + students[i].getName());
+        }
+
+        System.out.print("Введите номер первого ученика: ");
+        int firstIndex = scanner.nextInt() - 1;
+        System.out.print("Введите номер второго ученика: ");
+        int secondIndex = scanner.nextInt() - 1;
+
+        students[firstIndex].compareGriffindor(students[secondIndex]);
+    }
+
+    public static void studentsChoiceSlytherin(Slytherin[] students) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Выберите двух учеников для сравнения:");
+
+        for (int i = 0; i < students.length; i++) {
+            System.out.println((i + 1) + ". " + students[i].getName());
+        }
+
+        System.out.print("Введите номер первого ученика: ");
+        int firstIndex = scanner.nextInt() - 1;
+        System.out.print("Введите номер второго ученика: ");
+        int secondIndex = scanner.nextInt() - 1;
+
+        students[firstIndex].compareSlytherin(students[secondIndex]);
+    }
+
+    public static void studentsChoiceHufflepuff(Hufflepuff[] students) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Выберите двух учеников для сравнения:");
+
+        for (int i = 0; i < students.length; i++) {
+            System.out.println((i + 1) + ". " + students[i].getName());
+        }
+
+        System.out.print("Введите номер первого ученика: ");
+        int firstIndex = scanner.nextInt() - 1;
+        System.out.print("Введите номер второго ученика: ");
+        int secondIndex = scanner.nextInt() - 1;
+
+        students[firstIndex].compareHufflepuff(students[secondIndex]);
+    }
+
+    public static void studentsChoiceRavenclaw(Ravenclaw[] students) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Выберите двух учеников для сравнения:");
+
+        for (int i = 0; i < students.length; i++) {
+            System.out.println((i + 1) + ". " + students[i].getName());
+        }
+
+        System.out.print("Введите номер первого ученика: ");
+        int firstIndex = scanner.nextInt() - 1;
+        System.out.print("Введите номер второго ученика: ");
+        int secondIndex = scanner.nextInt() - 1;
+
+        students[firstIndex].compareRavenclaw(students[secondIndex]);
+    }
+
+    public static void studentsChoiceMagicAndTransgressionDistance(Gryffindor[] gryffindors, Slytherin[] slytherins,
+                                                                   Hufflepuff[] hufflepuffs, Ravenclaw[] ravenclaws) {
+        System.out.println("\n");
+
+        Hogwarts[] allStudents = new Hogwarts[gryffindors.length + slytherins.length + hufflepuffs.length + ravenclaws.length];
+        System.arraycopy(gryffindors, 0, allStudents, 0, gryffindors.length);
+        System.arraycopy(slytherins, 0, allStudents, gryffindors.length, slytherins.length);
+        System.arraycopy(hufflepuffs, 0, allStudents, gryffindors.length + slytherins.length, hufflepuffs.length);
+        System.arraycopy(ravenclaws, 0, allStudents, gryffindors.length + slytherins.length + hufflepuffs.length, ravenclaws.length);
+
+        System.out.println("Выберите двух студентов для сравнения:");
+        for (Hogwarts student : allStudents) {
+            System.out.println(student.getName());
+        }
+        System.out.println("\n");
+
+        Scanner scanner = new Scanner(System.in);
+        Hogwarts student1 = null;
+        Hogwarts student2 = null;
+        while (student1 == null || student2 == null) {
+            System.out.print("Первый студент: ");
+            String student1Name = scanner.nextLine();
+            System.out.print("Второй студент: ");
+            String student2Name = scanner.nextLine();
+
+            for (Hogwarts student : allStudents) {
+                if (student.getName().equals(student1Name)) {
+                    student1 = student;
+                }
+                if (student.getName().equals(student2Name)) {
+                    student2 = student;
+                }
+            }
+            if (student1 == null || student2 == null) {
+                System.out.println("Некорректные имена студентов, попробуйте еще раз:");
+            }
+        }
+        student1.compareMagicAndTransgressionDistance(student2);
+
     }
 
 

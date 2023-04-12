@@ -74,34 +74,18 @@ public class Slytherin extends Hogwarts {
                 ", расстояние трансгрессии-" + getTransgressionDistance();
     }
 
-    public void studentsChoiceSlytherin(Slytherin[] students) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Выберите двух учеников для сравнения:");
 
-        for (int i = 0; i < students.length; i++) {
-            System.out.println((i + 1) + ". " + students[i].getName());
-        }
 
-        System.out.print("Введите номер первого ученика: ");
-        int firstIndex = scanner.nextInt() - 1;
-        System.out.print("Введите номер второго ученика: ");
-        int secondIndex = scanner.nextInt() - 1;
-
-        compareSlytherin(students, firstIndex, secondIndex);
-    }
-
-    public void compareSlytherin(Slytherin[] students, int firstIndex, int secondIndex){
-        int firstTotal = students[firstIndex].getCunning() + students[firstIndex].getDetermination() + students[firstIndex].getAmbition() +
-                students[firstIndex].getResourcefulness() + students[firstIndex].getDesireForPower();
-        int secondTotal = students[secondIndex].getCunning() + students[secondIndex].getDetermination() + students[secondIndex].getAmbition() +
-                students[secondIndex].getResourcefulness() + students[secondIndex].getDesireForPower();
+    public void compareSlytherin(Slytherin student){
+        int firstTotal = this.getCunning() + this.getDetermination() + this.getAmbition() + this.getResourcefulness() + this.getDesireForPower();
+        int secondTotal = student.getCunning() + student.getDetermination() + student.getAmbition() + student.getResourcefulness() + student.getDesireForPower();
 
         if (firstTotal > secondTotal) {
-            System.out.println(students[firstIndex].getName() + " лучший ученик, чем " + students[secondIndex].getName());
+            System.out.println(this.getName() + " лучший ученик, чем " + student.getName());
         } else if (firstTotal < secondTotal) {
-            System.out.println(students[secondIndex].getName() + " лучший ученик, чем " + students[firstIndex].getName());
+            System.out.println(student.getName() + " лучший ученик, чем " + this.getName());
         } else {
-            System.out.println(students[firstIndex].getName() + " и " + students[secondIndex].getName() + " равны по качествам.");
+            System.out.println(this.getName() + " и " + student.getName() + " равны по качествам.");
         }
     }
 
